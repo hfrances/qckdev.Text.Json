@@ -2,7 +2,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using qckdev.Text.Json.Test.TestObjects;
 using System;
 
-namespace qckdev.Text.Json.Text
+namespace qckdev.Text.Json.Test
 {
     [TestClass]
     public class JsonConverterTest
