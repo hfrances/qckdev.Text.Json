@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31019.35
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qckdev.Text.Json", "qckdev.Text.Json\qckdev.Text.Json.csproj", "{10F16B83-9637-44F3-B988-563E02D75A11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qckdev.Text.Json.Text", "qckdev.Text.Json.Text\qckdev.Text.Json.Text.csproj", "{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10F16B83-9637-44F3-B988-563E02D75A11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10F16B83-9637-44F3-B988-563E02D75A11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10F16B83-9637-44F3-B988-563E02D75A11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10F16B83-9637-44F3-B988-563E02D75A11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EFF31C16-A93C-4085-9A40-7B37FD104B26}
+	EndGlobalSection
+EndGlobal

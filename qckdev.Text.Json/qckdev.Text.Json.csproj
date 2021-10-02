@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard1.2;net461;</TargetFrameworks>
+    <VersionSuffix>$(VersionSuffix)</VersionSuffix>
+    <Version>0.1.0-alpha</Version>
+    <Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>
+    <Company>TrCode</Company>
+    <Authors>hfrances</Authors>
+    <Product>qckdev.Text.Json (Preview)</Product>
+    <Description>Provides types that serialize and deserialize JSON using System.Text.Json for more recent frameworks and Newtonsoft.Json for older ones transparently.</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageProjectUrl>https://github.com/hfrances/qckdev.Text.Json</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461'">
+    <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461'">
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <PackageReference Include="System.Text.Json" Version="5.0" />
+  </ItemGroup>
+  
+</Project>
