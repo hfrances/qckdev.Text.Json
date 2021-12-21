@@ -159,10 +159,6 @@ jobs:
         inputs:
           command: 'restore'
           projects: '**/*.??proj'
-          feedsToUse: 'config'
-          nugetConfigPath: 'nuget.config'
-          ${{ if ne(variables.ExternalFeed, '') }} : 
-            externalFeedCredentials: '$(ExternalFeed)'
      
       - ${{ if ne(parameters.Analyze, 'disabled') }} :
         - task: SonarCloudPrepare@1
