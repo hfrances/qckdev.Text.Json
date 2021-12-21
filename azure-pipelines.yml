@@ -53,7 +53,7 @@ variables:
     - name: Analyze
       value: ${{ parameters.Analyze }}
     - name: SonarQubeEnabled
-      value: $[or(eq(variables.Analyze, 'true'), and(eq(variables.Analyze, 'auto'), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/main'))))]
+      value: $[or(eq(variables.Analyze, 'true'), and(eq(variables.Analyze, 'auto'), or(eq(variables['Build.SourceBranch'], 'refs/heads/master'), eq(variables['Build.SourceBranch'], 'refs/heads/main'), eq(variables['Build.SourceBranch'], 'refs/heads/staging'))))]
 
 jobs:
   - job: Build
@@ -123,14 +123,6 @@ jobs:
               $description = "$($xml.Project.PropertyGroup.Description)".Trim();
               write-output "Description: $description";
               write-output "##vso[task.setvariable variable=MainProject.Description]$description";
-  
-              if ($version) {
-                $sufix = ".v$version";
-              }
-              else {
-                $sufix = "";
-              }
-              write-output "##vso[task.setvariable variable=BuildParameters.OutputFile]$packageName$sufix.nupkg";
             }
      
       - task: PowerShell@2
@@ -153,12 +145,14 @@ jobs:
           packageType: 'sdk'
           version: '5.0.x'
           includePreviewVersions: false
+          displayName: UseDotNet: 5.0
       
       - task: UseDotNet@2
         inputs:
           packageType: 'runtime'
           version: '3.1.x'
           includePreviewVersions: false
+          displayName: UseDotNet: 3.1
 
       - task: DotNetCoreCLI@2
         displayName: Restore
@@ -278,7 +272,7 @@ jobs:
       - task: PublishPipelineArtifact@1
         displayName: 'Publish Artifact: build'
         inputs:
-          targetPath: '$(Build.ArtifactStagingDirectory)/build/$(BuildParameters.OutputFile)'
+          targetPath: '$(Build.ArtifactStagingDirectory)/build'
           artifact: 'build'
     
       - task: NuGetCommand@2
