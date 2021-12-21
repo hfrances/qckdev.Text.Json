@@ -130,7 +130,7 @@ jobs:
               else {
                 $sufix = "";
               }
-              write-output "##vso[task.setvariable variable=BuildParameters.OutputFile]$packageName$sufix.zip";
+              write-output "##vso[task.setvariable variable=BuildParameters.OutputFile]$packageName$sufix.nupkg";
             }
      
       - task: PowerShell@2
@@ -152,6 +152,12 @@ jobs:
         inputs:
           packageType: 'sdk'
           version: '5.0.x'
+          includePreviewVersions: false
+      
+      - task: UseDotNet@2
+        inputs:
+          packageType: 'runtime'
+          version: '3.1.x'
           includePreviewVersions: false
 
       - task: DotNetCoreCLI@2
