@@ -167,13 +167,13 @@ jobs:
       - ${{ if ne(parameters.Analyze, 'disabled') }} :
         - task: SonarCloudPrepare@1
           inputs:
-              SonarCloud: 'SonarCloud'
-              organization: 'hfrances-github'
-              scannerMode: 'MSBuild'
-              projectKey: '$(BuildParameters.ProjectKey)'
-              projectName: '$(BuildParameters.ProjectName)'
-              projectVersion: '$(MainProject.Version)'
-              extraProperties: |
+            SonarCloud: 'SonarCloud'
+            organization: 'hfrances-github'
+            scannerMode: 'MSBuild'
+            projectKey: '$(BuildParameters.ProjectKey)'
+            projectName: '$(BuildParameters.ProjectName)'
+            projectVersion: '$(MainProject.Version)'
+            extraProperties: |
               # Additional properties that will be passed to the scanner, 
               # Put one key=value per line, example:
               sonar.exclusions=**/obj/**,**/*.dll
