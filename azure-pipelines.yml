@@ -251,9 +251,9 @@ jobs:
         displayName: 'Coverage: Publish report'
      
       - ${{ if ne(parameters.Analyze, 'disabled') }} :
-        - task: SonarCloudAnalyze@4
+        - task: SonarCloudAnalyze@1
           condition: eq(variables.SonarQubeEnabled, 'true')
-        - task: SonarCloudPublish@4
+        - task: SonarCloudPublish@1
           inputs:
             pollingTimeoutSec: '300'
           condition: eq(variables.SonarQubeEnabled, 'true')
