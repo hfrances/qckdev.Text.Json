@@ -11,7 +11,7 @@ trigger:
   - azure-pipelines
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'vs2017-win2016' #'windows-2019'
 
 parameters:
   - name: Deploy
