@@ -1,6 +1,8 @@
 ﻿#if NEWTONSOFT
 #else
 
+using System;
+using System.Collections.Generic;
 using System.Dynamic;
 using System.Text.Json;
 
@@ -52,7 +54,10 @@ namespace qckdev.Text.Json
         /// </exception>
         public static object DeserializeObject(string value)
         {
-            return JsonSerializer.Deserialize<ExpandoObject>(value);
+            using (var doc = JsonDocument.Parse(value))
+            {
+                return Parse(doc.RootElement);
+            }
         }
 
         /// <summary>
@@ -77,6 +82,64 @@ namespace qckdev.Text.Json
         public static TValue DeserializeObject<TValue>(string value)
         {
             return JsonSerializer.Deserialize<TValue>(value, joptions);
+        }
+
+
+        private static object Parse(JsonElement element)
+        {
+            if (element.ValueKind == JsonValueKind.Array)
+            {
+                var rdo = new List<object>();
+                var etor = element.EnumerateArray();
+
+                while (etor.MoveNext())
+                {
+                    rdo.Add(Parse(etor.Current));
+                }
+                return rdo;
+            }
+            else
+            {
+                var rdo = new ExpandoObject();
+
+                foreach (var prop in element.EnumerateObject())
+                {
+                    var name = prop.Name;
+                    var elto = prop.Value;
+
+                    switch (elto.ValueKind)
+                    {
+                        case JsonValueKind.Number:
+                            var decimalValue = elto.GetDecimal();
+                            var intValue = (int)decimalValue;
+
+                            if (intValue == decimalValue)
+                            {
+                                ((IDictionary<string, object>)rdo).Add(name, intValue);
+                            }
+                            else
+                            {
+                                ((IDictionary<string, object>)rdo).Add(name, decimalValue);
+                            }
+                            break;
+                        case JsonValueKind.String:
+                            ((IDictionary<string, object>)rdo).Add(name, elto.GetString());
+                            break;
+                        case JsonValueKind.True:
+                        case JsonValueKind.False:
+                            ((IDictionary<string, object>)rdo).Add(name, elto.GetBoolean());
+                            break;
+                        case JsonValueKind.Object:
+                        case JsonValueKind.Array:
+                            ((IDictionary<string, object>)rdo).Add(name, Parse(elto));
+                            break;
+                        default:
+                            ((IDictionary<string, object>)rdo).Add(name, elto.GetString());
+                            break;
+                    }
+                }
+                return rdo;
+            }
         }
 
     }

@@ -1,9 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard1.2;net461;</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard1.2;net35;net461</TargetFrameworks>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
-    <Version>0.1.0-alpha</Version>
+    <Version>0.2.0-alpha</Version>
     <Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>
     <Company>TrCode</Company>
     <Authors>hfrances</Authors>
@@ -15,13 +15,16 @@
     <PackageProjectUrl>https://github.com/hfrances/qckdev.Text.Json</PackageProjectUrl>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <DefineConstants>$(DefineConstants);NO_DYNAMIC</DefineConstants>
+  </PropertyGroup>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net35' or '$(TargetFramework)'=='net461'">
     <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net35' or '$(TargetFramework)'=='net461'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <Reference Include="System.Net.Http" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">

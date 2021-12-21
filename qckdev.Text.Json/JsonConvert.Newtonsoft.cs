@@ -3,7 +3,6 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
 using System;
-using System.Dynamic;
 
 namespace qckdev.Text.Json
 {
@@ -31,13 +30,17 @@ namespace qckdev.Text.Json
         }
 
         /// <summary>
-        /// Parses the text representing a single JSON value into an instance of the type <see cref="ExpandoObject"/>.
+        /// Parses the text representing a single JSON value into an instance of the type <see cref="Object"/>.
         /// </summary>
         /// <param name="value">The JSON text to parse.</param>
-        /// <returns>A <see cref="ExpandoObject"/> representation of the JSON value.</returns>
+        /// <returns>A <see cref="Object"/> representation of the JSON value.</returns>
         public static object DeserializeObject(string value)
         {
-            return Newtonsoft.Json.JsonConvert.DeserializeObject<ExpandoObject>(value, jsettings);
+#if NO_DYNAMIC
+            return Newtonsoft.Json.JsonConvert.DeserializeObject<object>(value, jsettings);
+#else
+            return Newtonsoft.Json.JsonConvert.DeserializeObject(value, jsettings);
+#endif
         }
 
         /// <summary>

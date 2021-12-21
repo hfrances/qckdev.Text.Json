@@ -40,18 +40,43 @@ namespace qckdev.Text.Json.Test
         [TestMethod]
         public void Deserialize_Dynamic()
         {
-#if NEWTONSOFT
             dynamic value = JsonConvert.DeserializeObject(@"{""id"":132, ""name"":""ditto"", ""order"":203, ""weight"":40 }");
 
             Assert.AreEqual(
                 new { Id = 132, Name = "ditto", Order = 203 },
                 new { Id = (int)value.id, Name = (string)value.name, Order = (int)value.order }
             );
-#else
-            Assert.Inconclusive("Pending to implement a dynamic comparer for System.Text.Json."); // TODO: Implement dynamic comprer for System.Text.Json.
-#endif
         }
 
+        [TestMethod]
+        public void Deserialize_Dynamic_Object()
+        {
+            dynamic value = JsonConvert.DeserializeObject(@"{""id"":132, ""name"":""ditto"", ""factor"":434.1, ""object"": { ""id"":1, ""name"":""something"" } }");
+
+            Assert.AreEqual(
+                new { Id = 132, Name = "ditto", Factor = 434.1M, Object = new { Id = 1, Name = "something" } },
+                new { Id = (int)value.id, Name = (string)value.name, Factor = (decimal)value.factor, Object = new { Id = (int)value.@object.id, Name = (string)value.@object.name } }
+            );
+        }
+
+        [TestMethod]
+        public void Deserialize_Dynamic_Array()
+        {
+            dynamic value = JsonConvert.DeserializeObject(@"[{""id"":132, ""name"":""ditto""}, {""id"":133, ""name"":""a""}]");
+
+            CollectionAssert.AreEqual(
+                new[] { new { Id = 132, Name = "ditto" }, new { Id = 133, Name = "a" } },
+                new[] { new { Id = (int)value[0].id, Name = (string)value[0].name }, new { Id = (int)value[1].id, Name = (string)value[1].name } }
+            );
+        }
+
+        [TestMethod]
+        public void Deserialize_Dynamic_ObjectAndArray()
+        {
+            dynamic value = JsonConvert.DeserializeObject(@"{ ""item"": [{""id"":132, ""name"":""ditto""}, {""id"":133, ""name"":""a""}] }");
+
+            Assert.Inconclusive();
+        }
 
     }
 }

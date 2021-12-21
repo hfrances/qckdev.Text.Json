@@ -4,7 +4,7 @@
     <TargetFrameworks>netcoreapp3.1;net461;net451</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-
+  
   <PropertyGroup Condition="'$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net461'">
     <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
   </PropertyGroup>
