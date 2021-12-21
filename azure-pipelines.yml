@@ -112,7 +112,7 @@ jobs:
               write-error 'Project file not found: $(MainProject.FullName)';
             }
             else {
-              $packageName = $file.BaseName?.ToLower();
+              $packageName = $file.BaseName.ToLower();
               write-output "Package name: $packageName";
               write-output "##vso[task.setvariable variable=MainProject.PackageName]$packageName";
        
