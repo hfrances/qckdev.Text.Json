@@ -81,7 +81,14 @@ namespace qckdev.Text.Json
         /// </exception>
         public static TValue DeserializeObject<TValue>(string value)
         {
-            return JsonSerializer.Deserialize<TValue>(value, joptions);
+            if (typeof(TValue) == typeof(object) || typeof(TValue) == typeof(ExpandoObject))
+            {
+                return (TValue)DeserializeObject(value);
+            }
+            else
+            {
+                return JsonSerializer.Deserialize<TValue>(value, joptions);
+            }
         }
 
 
