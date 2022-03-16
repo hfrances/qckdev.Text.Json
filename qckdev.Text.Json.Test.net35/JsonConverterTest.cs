@@ -23,29 +23,5 @@ namespace qckdev.Text.Json.Test
             InnerTest.Deserialize_Pokemon();
         }
 
-        [TestMethod]
-        public void Deserialize_Dynamic()
-        {
-            InnerTest.Deserialize_Dynamic();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_Object()
-        {
-            InnerTest.Deserialize_Dynamic_Object();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_Array()
-        {
-            InnerTest.Deserialize_Dynamic_Array();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_ObjectAndArray()
-        {
-            InnerTest.Deserialize_Dynamic_ObjectAndArray();
-        }
-
     }
 }

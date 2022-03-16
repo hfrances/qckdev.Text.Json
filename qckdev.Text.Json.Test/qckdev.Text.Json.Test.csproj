@@ -1,39 +1,30 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net5.0;netcoreapp3.1;net451;net461</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1;net461;net451</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net461'">
-    <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
-  </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net5.0' or '$(TargetFramework)'=='netcoreapp3.1'">
-    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="16.5.0" />
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.0" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.0" />
+  <ItemGroup Condition="'$(TargetFramework)'=='net6.0' or '$(TargetFramework)'=='net5.0' or '$(TargetFramework)'=='netcoreapp3.1'">
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.1.0" />
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net461'">
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" targetFramework="net461" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.1" targetFramework="net461" />
+  <ItemGroup Condition="'$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net451'">
+    <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" targetFramework="$(TargetFramework)" />
+    <PackageReference Include="MSTest.TestFramework" Version="2.1.1" targetFramework="$(TargetFramework)" />
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net451'">
-    <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" targetFramework="net451" />
-    <PackageReference Include="MSTest.TestFramework" Version="2.1.1" targetFramework="net451" />
-    <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-  
+      
   <ItemGroup>
     <PackageReference Include="coverlet.msbuild" Version="3.0.3">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="coverlet.collector" Version="1.2.0" />
+    <ProjectReference Include="..\qckdev.Text.Json.Test.Common\qckdev.Text.Json.Test.Common.csproj" />
     <ProjectReference Include="..\qckdev.Text.Json\qckdev.Text.Json.csproj" />
   </ItemGroup>
-  
+    
 </Project>
