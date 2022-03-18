@@ -264,7 +264,7 @@ jobs:
       - task: DotNetCoreCLI@2
         inputs:
           command: 'pack'
-          packagesToPack: '**/*.??proj;!examples/**/*.??proj;!**/*.Test.??proj'
+          packagesToPack: '**/*.??proj;!examples/**/*.??proj;!**/*.Test.??proj;!**/*.Test.*.??proj'
           packDirectory: '$(Build.ArtifactStagingDirectory)/build'
           nobuild: true
           versioningScheme: 'off'
