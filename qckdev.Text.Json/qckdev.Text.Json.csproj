@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;netstandard2.0;netstandard1.2;net461;$(net40);$(net35)</TargetFrameworks>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
-    <Version>0.8.0-beta</Version>
+    <Version>0.9.1-beta</Version>
     <!--<Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>-->
     <Company>TrCode</Company>
     <Authors>hfrances</Authors>
@@ -19,15 +19,15 @@
     <DefineConstants>$(DefineConstants);NO_DYNAMIC</DefineConstants>
   </PropertyGroup>
   
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net35' or '$(TargetFramework)'=='net40'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net40' or '$(TargetFramework)'=='net35'">
     <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net35' or '$(TargetFramework)'=='net40'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net40' or '$(TargetFramework)'=='net35'">
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0' or '$(TargetFramework)'=='net461'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Text.Json" Version="5.0" />
   </ItemGroup>
 
