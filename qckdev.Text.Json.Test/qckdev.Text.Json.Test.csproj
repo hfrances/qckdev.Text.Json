@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1;net461;net451</TargetFrameworks>
+    <TargetFrameworks>net6.0;net5.0;netcoreapp3.1;net461;net451;$(net45)</TargetFrameworks>
     <IsPackable>false</IsPackable>
   </PropertyGroup>
 
@@ -11,7 +11,7 @@
     <PackageReference Include="MSTest.TestFramework" Version="2.1.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net451'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net45'">
     <PackageReference Include="MSTest.TestAdapter" Version="2.1.1" targetFramework="$(TargetFramework)" />
     <PackageReference Include="MSTest.TestFramework" Version="2.1.1" targetFramework="$(TargetFramework)" />
     <Reference Include="Microsoft.CSharp" />

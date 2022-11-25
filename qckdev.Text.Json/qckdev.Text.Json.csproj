@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>net6.0;netstandard2.0;netstandard1.2;net461;$(net40);$(net35)</TargetFrameworks>
     <VersionSuffix>$(VersionSuffix)</VersionSuffix>
-    <Version>0.9.1-beta</Version>
+    <Version>0.9.2-beta</Version>
     <!--<Version Condition=" '$(VersionSuffix)' != '' ">$(Version)-$(VersionSuffix)</Version>-->
     <Company>TrCode</Company>
     <Authors>hfrances</Authors>
@@ -24,7 +24,8 @@
   </PropertyGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net40' or '$(TargetFramework)'=='net35'">
-    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+    <!-- https://learn.microsoft.com/en-us/nuget/concepts/package-versioning#version-ranges -->
+    <PackageReference Include="Newtonsoft.Json" Version="[10.0.3,14.0)" />
   </ItemGroup>
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
