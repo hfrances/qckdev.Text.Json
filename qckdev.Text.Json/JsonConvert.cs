@@ -91,6 +91,33 @@ namespace qckdev.Text.Json
             }
         }
 
+        /// <summary>
+        /// Checks if a string value has a JSON format.
+        /// </summary>
+        /// <param name="value">The text to validate if it has a JSON format.</param>
+        /// <returns></returns>
+        public static bool IsDeserializable(string value)
+        {
+            bool result;
+
+            try
+            {
+                if (value == null)
+                {
+                    result = false;
+                }
+                else
+                {
+                    JsonDocument.Parse(value);
+                    result = true;
+                }
+            }
+            catch (JsonException)
+            {
+                result = false;
+            }
+            return result;
+        }
 
         private static object Parse(JsonElement element)
         {

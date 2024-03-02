@@ -1,6 +1,7 @@
 ﻿#if NEWTONSOFT
 
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Newtonsoft.Json.Serialization;
 using System;
 
@@ -52,6 +53,34 @@ namespace qckdev.Text.Json
         public static TValue DeserializeObject<TValue>(string value)
         {
             return Newtonsoft.Json.JsonConvert.DeserializeObject<TValue>(value, jsettings);
+        }
+
+        /// <summary>
+        /// Checks if a string value has a JSON format.
+        /// </summary>
+        /// <param name="value">The text to validate if it has a JSON format.</param>
+        /// <returns></returns>
+        public static bool IsDeserializable(string value)
+        {
+            bool result;
+
+            try
+            {
+                if (value == null)
+                {
+                    result = false;
+                }
+                else
+                {
+                    JToken.Parse(value);
+                    result = true;
+                }
+            }
+            catch (JsonException)
+            {
+                result = false;
+            }
+            return result;
         }
 
     }

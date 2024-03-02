@@ -23,5 +23,34 @@ namespace qckdev.Text.Json.Test
             InnerTest.Deserialize_Pokemon();
         }
 
+        [TestMethod]
+        public void IsDeserializable_True_1()
+        {
+           InnerTest.IsDeserializable_True_1();
+        }
+
+        [TestMethod]
+        public void IsDeserializable_True_2()
+        {
+            InnerTest.IsDeserializable_True_2();
+        }
+
+        [TestMethod]
+        public void IsDeserializable_False_Null()
+        {
+            InnerTest.IsDeserializable_False_Null();
+        }
+
+        [TestMethod]
+        public void IsDeserializable_False_Empty()
+        {
+            InnerTest.IsDeserializable_False_Empty();
+        }
+
+        [TestMethod]
+        public void IsDeserializable_False_Text()
+        {
+            InnerTest.IsDeserializable_False_Text();
+        }
     }
 }

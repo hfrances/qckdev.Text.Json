@@ -83,5 +83,40 @@ namespace qckdev.Text.Json.Test.Common
 
 #endif
 
+        public void IsDeserializable_True_1()
+        {
+            const string json = "{\"property1\":\"value1\", \"property2\":\"value2\"}";
+
+            Assert.AreEqual(true, JsonConvert.IsDeserializable(json));
+        }
+
+        public void IsDeserializable_True_2()
+        {
+            const string json = "[]";
+
+            Assert.AreEqual(true, JsonConvert.IsDeserializable(json));
+        }
+
+        public void IsDeserializable_False_Null()
+        {
+            const string json = null;
+
+            Assert.AreEqual(false, JsonConvert.IsDeserializable(json));
+        }
+
+        public void IsDeserializable_False_Empty()
+        {
+            const string json = "";
+
+            Assert.AreEqual(false, JsonConvert.IsDeserializable(json));
+        }
+
+        public void IsDeserializable_False_Text()
+        {
+            const string json = "(null)";
+
+            Assert.AreEqual(false, JsonConvert.IsDeserializable(json));
+        }
+
     }
 }
