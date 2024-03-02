@@ -24,33 +24,9 @@ namespace qckdev.Text.Json.Test
         }
 
         [TestMethod]
-        public void Deserialize_Dynamic()
-        {
-            InnerTest.Deserialize_Dynamic();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_Object()
-        {
-            InnerTest.Deserialize_Dynamic_Object();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_Array()
-        {
-            InnerTest.Deserialize_Dynamic_Array();
-        }
-
-        [TestMethod]
-        public void Deserialize_Dynamic_ObjectAndArray()
-        {
-            InnerTest.Deserialize_Dynamic_ObjectAndArray();
-        }
-
-        [TestMethod]
         public void IsDeserializable_True_1()
         {
-            InnerTest.IsDeserializable_True_1();
+           InnerTest.IsDeserializable_True_1();
         }
 
         [TestMethod]
@@ -76,6 +52,5 @@ namespace qckdev.Text.Json.Test
         {
             InnerTest.IsDeserializable_False_Text();
         }
-
     }
 }

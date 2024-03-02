@@ -76,6 +76,5 @@ namespace qckdev.Text.Json.Test
         {
             InnerTest.IsDeserializable_False_Text();
         }
-
     }
 }

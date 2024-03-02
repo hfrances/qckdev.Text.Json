@@ -1,11 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31019.35
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qckdev.Text.Json", "qckdev.Text.Json\qckdev.Text.Json.csproj", "{10F16B83-9637-44F3-B988-563E02D75A11}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qckdev.Text.Json.Test", "qckdev.Text.Json.Test\qckdev.Text.Json.Test.csproj", "{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qckdev.Text.Json.Test.Net35", "qckdev.Text.Json.Test.net35\qckdev.Text.Json.Test.Net35.csproj", "{A3EE0F2F-D1C3-492C-8DD5-09B78D3835DF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "qckdev.Text.Json.Test.Common", "qckdev.Text.Json.Test.Common\qckdev.Text.Json.Test.Common.csproj", "{009B8440-88F2-4D56-AAE4-F0F145773895}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qckdev.Text.Json.Test.Net40", "qckdev.Text.Json.Test.Net40\qckdev.Text.Json.Test.Net40.csproj", "{FA8B0EE1-4E3D-4EEE-875E-7D5E38B7E8CD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +27,18 @@ Global
 		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE9228C0-4BB2-47D0-ABAB-51F5ABE31A25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A3EE0F2F-D1C3-492C-8DD5-09B78D3835DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A3EE0F2F-D1C3-492C-8DD5-09B78D3835DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A3EE0F2F-D1C3-492C-8DD5-09B78D3835DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A3EE0F2F-D1C3-492C-8DD5-09B78D3835DF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{009B8440-88F2-4D56-AAE4-F0F145773895}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{009B8440-88F2-4D56-AAE4-F0F145773895}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{009B8440-88F2-4D56-AAE4-F0F145773895}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{009B8440-88F2-4D56-AAE4-F0F145773895}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FA8B0EE1-4E3D-4EEE-875E-7D5E38B7E8CD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FA8B0EE1-4E3D-4EEE-875E-7D5E38B7E8CD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FA8B0EE1-4E3D-4EEE-875E-7D5E38B7E8CD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FA8B0EE1-4E3D-4EEE-875E-7D5E38B7E8CD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

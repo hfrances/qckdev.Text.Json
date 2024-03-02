@@ -91,61 +91,79 @@ namespace qckdev.Text.Json
             }
         }
 
+        /// <summary>
+        /// Checks if a string value has a JSON format.
+        /// </summary>
+        /// <param name="value">The text to validate if it has a JSON format.</param>
+        /// <returns></returns>
+        public static bool IsDeserializable(string value)
+        {
+            bool result;
+
+            try
+            {
+                if (value == null)
+                {
+                    result = false;
+                }
+                else
+                {
+                    JsonDocument.Parse(value);
+                    result = true;
+                }
+            }
+            catch (JsonException)
+            {
+                result = false;
+            }
+            return result;
+        }
 
         private static object Parse(JsonElement element)
         {
-            if (element.ValueKind == JsonValueKind.Array)
+            switch (element.ValueKind)
             {
-                var rdo = new List<object>();
-                var etor = element.EnumerateArray();
+                case JsonValueKind.Array:
+                    var list = new List<object>();
+                    var etor = element.EnumerateArray();
 
-                while (etor.MoveNext())
-                {
-                    rdo.Add(Parse(etor.Current));
-                }
-                return rdo;
-            }
-            else
-            {
-                var rdo = new ExpandoObject();
-
-                foreach (var prop in element.EnumerateObject())
-                {
-                    var name = prop.Name;
-                    var elto = prop.Value;
-
-                    switch (elto.ValueKind)
+                    while (etor.MoveNext())
                     {
-                        case JsonValueKind.Number:
-                            var decimalValue = elto.GetDecimal();
-                            var intValue = (int)decimalValue;
-
-                            if (intValue == decimalValue)
-                            {
-                                ((IDictionary<string, object>)rdo).Add(name, intValue);
-                            }
-                            else
-                            {
-                                ((IDictionary<string, object>)rdo).Add(name, decimalValue);
-                            }
-                            break;
-                        case JsonValueKind.String:
-                            ((IDictionary<string, object>)rdo).Add(name, elto.GetString());
-                            break;
-                        case JsonValueKind.True:
-                        case JsonValueKind.False:
-                            ((IDictionary<string, object>)rdo).Add(name, elto.GetBoolean());
-                            break;
-                        case JsonValueKind.Object:
-                        case JsonValueKind.Array:
-                            ((IDictionary<string, object>)rdo).Add(name, Parse(elto));
-                            break;
-                        default:
-                            ((IDictionary<string, object>)rdo).Add(name, elto.GetString());
-                            break;
+                        list.Add(Parse(etor.Current));
                     }
-                }
-                return rdo;
+                    return list.ToArray();
+
+                case JsonValueKind.Object:
+                    var rdo = new ExpandoObject();
+
+                    foreach (var prop in element.EnumerateObject())
+                    {
+                        ((IDictionary<string, object>)rdo).Add(prop.Name, Parse(prop.Value));
+                    }
+                    return rdo;
+
+                case JsonValueKind.Number:
+                    var decimalValue = element.GetDecimal();
+
+                    if (decimalValue % 1 == 0)
+                    {
+                        return (int)decimalValue;
+                    }
+                    else
+                    {
+                        return decimalValue;
+                    }
+
+                case JsonValueKind.True:
+                case JsonValueKind.False:
+                    return element.GetBoolean();
+
+                case JsonValueKind.Null:
+                    return null;
+
+                case JsonValueKind.String:
+                default:
+                    return element.GetString();
             }
         }
 

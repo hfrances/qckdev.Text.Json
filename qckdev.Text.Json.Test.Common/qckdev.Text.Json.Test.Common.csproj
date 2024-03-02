@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>net7.0;net6.0;net5.0;netcoreapp3.1;net461;net451;$(net45);$(net40);$(net35)</TargetFrameworks>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
+    <DefineConstants>$(DefineConstants);NO_DYNAMIC</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net45' or '$(TargetFramework)'=='net40' or '$(TargetFramework)'=='net35'">
+    <DefineConstants>$(DefineConstants);NEWTONSOFT</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net451' or '$(TargetFramework)'=='net45' or '$(TargetFramework)'=='net40'">
+    <Reference Include="Microsoft.CSharp" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\qckdev.Text.Json\qckdev.Text.Json.csproj" />
+  </ItemGroup>
+
+</Project>
