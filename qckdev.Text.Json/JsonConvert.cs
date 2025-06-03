@@ -17,7 +17,8 @@ namespace qckdev.Text.Json
 
         static readonly JsonSerializerOptions joptions = new JsonSerializerOptions()
         {
-            PropertyNamingPolicy = JsonNamingPolicy.CamelCase
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            PropertyNameCaseInsensitive = true
         };
 
         /// <summary>
