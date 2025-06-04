@@ -24,6 +24,12 @@ namespace qckdev.Text.Json.Test
         }
 
         [TestMethod]
+        public void Deserialize_Pokemon_PascalCase()
+        {
+            InnerTest.Deserialize_Pokemon_PascalCase();
+        }
+
+        [TestMethod]
         public void IsDeserializable_True_1()
         {
            InnerTest.IsDeserializable_True_1();

@@ -42,6 +42,16 @@ namespace qckdev.Text.Json.Test.Common
             );
         }
 
+        public void Deserialize_Pokemon_PascalCase()
+        {
+            var rdo = JsonConvert.DeserializeObject<Pokemon>(@"{""Id"":132, ""Name"":""ditto"", ""Order"":203, ""Weight"":40, ""Species"": {""Name"":""ditto"", ""url"":""https://pokeapi.co/api/v2/pokemon-species/132/""} }");
+
+            Assert.AreEqual(
+                new { Id = 132, Name = "ditto", Order = 203, Spices = new { Name = "ditto", Url = "https://pokeapi.co/api/v2/pokemon-species/132/" } },
+                new { rdo.Id, rdo.Name, rdo.Order, Spices = new { rdo.Species.Name, rdo.Species.Url } }
+            );
+        }
+
 #if NO_DYNAMIC
 #else
         public void Deserialize_Dynamic()

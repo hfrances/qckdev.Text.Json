@@ -3,8 +3,9 @@
     public interface IJsonConverterTest
     {
         
-        void Deserialize_Pokemon();
         void SerializeAndDeserialize_Temperature();
+        void Deserialize_Pokemon();
+        void Deserialize_Pokemon_PascalCase();
 
 #if NO_DYNAMIC
 #else
