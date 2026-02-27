@@ -5,6 +5,7 @@ Welcome to the documentation for `qckdev.Text.Json`.
 ## Table of Contents
 
 - [Framework Compatibility](COMPATIBILITY.md) - Supported frameworks, package versions, and security considerations
+- [Legacy AssemblyName Build](LEGACY_ASSEMBLYNAME_BUILD.md) - Why `net35` generates a different assembly name and required CLI restore/build steps
 
 ## Quick Links
 
