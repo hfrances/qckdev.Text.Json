@@ -32,6 +32,20 @@ namespace qckdev.Text.Json.Test.Common
             );
         }
 
+        public void DeserializeAndSerialize_Temperature()
+        {
+            var json = JsonConvert.SerializeObject(new Temperature()
+            {
+                Date = DateTime.Parse("2019-08-01T00:00:00-07:00"),
+                TemperatureCelsius = 25,
+                Summary = "Hot"
+            });
+            var temperature = JsonConvert.DeserializeObject<Temperature>(json);
+            var jsonRoundTrip = JsonConvert.SerializeObject(temperature);
+
+            Assert.AreEqual(json, jsonRoundTrip);
+        }
+
         public void Deserialize_Pokemon()
         {
             var rdo = JsonConvert.DeserializeObject<Pokemon>(@"{""id"":132, ""name"":""ditto"", ""order"":203, ""weight"":40, ""species"": {""name"":""ditto"", ""url"":""https://pokeapi.co/api/v2/pokemon-species/132/""} }");
@@ -42,6 +56,21 @@ namespace qckdev.Text.Json.Test.Common
             );
         }
 
+        public void DeserializeAndSerialize_Pokemon()
+        {
+            const string json = @"{""id"":132, ""name"":""ditto"", ""order"":203, ""weight"":40, ""species"": {""name"":""ditto"", ""url"":""https://pokeapi.co/api/v2/pokemon-species/132/""} }";
+            var pokemon = JsonConvert.DeserializeObject<Pokemon>(json);
+            var jsonRoundTrip = JsonConvert.SerializeObject(pokemon);
+
+            var original = JsonConvert.DeserializeObject<Pokemon>(json);
+            var roundTrip = JsonConvert.DeserializeObject<Pokemon>(jsonRoundTrip);
+
+            Assert.AreEqual(
+                new { original.Id, original.Name, original.Order, Species = new { original.Species.Name, original.Species.Url } },
+                new { roundTrip.Id, roundTrip.Name, roundTrip.Order, Species = new { roundTrip.Species.Name, roundTrip.Species.Url } }
+            );
+        }
+
         public void Deserialize_Pokemon_PascalCase()
         {
             var rdo = JsonConvert.DeserializeObject<Pokemon>(@"{""Id"":132, ""Name"":""ditto"", ""Order"":203, ""Weight"":40, ""Species"": {""Name"":""ditto"", ""url"":""https://pokeapi.co/api/v2/pokemon-species/132/""} }");
@@ -49,6 +78,21 @@ namespace qckdev.Text.Json.Test.Common
             Assert.AreEqual(
                 new { Id = 132, Name = "ditto", Order = 203, Spices = new { Name = "ditto", Url = "https://pokeapi.co/api/v2/pokemon-species/132/" } },
                 new { rdo.Id, rdo.Name, rdo.Order, Spices = new { rdo.Species.Name, rdo.Species.Url } }
+            );
+        }
+
+        public void DeserializeAndSerialize_Pokemon_PascalCase()
+        {
+            const string json = @"{""Id"":132, ""Name"":""ditto"", ""Order"":203, ""Weight"":40, ""Species"": {""Name"":""ditto"", ""url"":""https://pokeapi.co/api/v2/pokemon-species/132/""} }";
+            var pokemon = JsonConvert.DeserializeObject<Pokemon>(json);
+            var jsonRoundTrip = JsonConvert.SerializeObject(pokemon);
+
+            var original = JsonConvert.DeserializeObject<Pokemon>(json);
+            var roundTrip = JsonConvert.DeserializeObject<Pokemon>(jsonRoundTrip);
+
+            Assert.AreEqual(
+                new { original.Id, original.Name, original.Order, Species = new { original.Species.Name, original.Species.Url } },
+                new { roundTrip.Id, roundTrip.Name, roundTrip.Order, Species = new { roundTrip.Species.Name, roundTrip.Species.Url } }
             );
         }
 
