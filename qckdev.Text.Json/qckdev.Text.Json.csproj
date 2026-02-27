@@ -34,7 +34,7 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.2' or '$(TargetFramework)'=='net461' or '$(TargetFramework)'=='net40' or '$(TargetFramework)'=='net35'">
     <!-- https://learn.microsoft.com/en-us/nuget/concepts/package-versioning#version-ranges -->
-    <PackageReference Include="Newtonsoft.Json" Version="[13.0.3,14.0)" />
+    <PackageReference Include="Newtonsoft.Json" Version="[13.0.4,14.0)" />
   </ItemGroup>
 
   <!-- Fix vulnerabilities for netstandard1.2 -->
