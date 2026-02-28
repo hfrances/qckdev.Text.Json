@@ -1,9 +1,10 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net10.0;net9.0;net8.0;net7.0;net6.0;net5.0;netcoreapp3.1;$(net461);$(net451);$(net45);$(net40);$(net35)</TargetFrameworks>
     <IsPackable>false</IsPackable>
-  </PropertyGroup>
+    <IsTestProject>true</IsTestProject>
+</PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='net35'">
     <DefineConstants>$(DefineConstants);NO_DYNAMIC</DefineConstants>
