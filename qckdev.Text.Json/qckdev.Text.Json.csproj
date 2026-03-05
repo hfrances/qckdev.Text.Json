@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFrameworks>net10.0;net9.0;net8.0;net7.0;net6.0;netstandard2.0;netstandard1.2;net461;$(net40);$(net35)</TargetFrameworks>
@@ -14,6 +14,8 @@
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>https://github.com/hfrances/qckdev.Text.Json</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
 
   <!-- Assembly naming: net35 uses .2 suffix, others use standard name -->
@@ -56,5 +58,9 @@
   <ItemGroup Condition="'$(TargetFramework)'=='net9.0' or '$(TargetFramework)'=='net10.0'">
     <PackageReference Include="System.Text.Json" Version="10.0.0" />
   </ItemGroup>
-
+  
+  <ItemGroup>
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\LICENSE" Pack="true" PackagePath="\" />
+  </ItemGroup>
 </Project>
