@@ -7,6 +7,14 @@
  
 Provides types that serialize and deserialize JSON using System.Text.Json for more recent frameworks and Newtonsoft.Json for older ones transparently.
 
+## 🛠️ Installation
+
+```bash
+dotnet add package qckdev.Text.Json
+```
+
+## ⚡ Quick Start
+
 **System.Text.Json**
   - .NET Standard 2.0 
 
